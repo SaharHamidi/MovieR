@@ -1,18 +1,48 @@
-what is your favourite animation?
+1) Do you prefer popular movies or indie films? 
+a)very popular shows
+b)indie movies
+c)doesn't matter to me
 
-what is the last series you watched that you really liked?
+2) What is the last series you watched that you really liked?
 
-choose two of the genres below that you like the most?
+3) Choose two of the genres below that you enjoy the most?
+a)comedy
+b)action
+c)drama
+d)horror
 
-what experience are you looking for when watching a movie?
+4) What is your favourite animation ever?(if you don't have one write:I don't watch animations)
 
-Who are your favorite actors or actresses?
+5) What experience are you looking for when watching a movie?
+a)a relaxing time
+b)a new concept to think about
+c)to learn about people and life
+d)excitement or fun
 
-which one of these directors would you most want to meet in real life?
+6) Who is your favorite actor or actresse?(Name one only.)
 
-What is your preferred movie length?
+7) Which one of the directors below would you want to meet in real life?
+a)Steven Spielberg
+b)Martin Scorsese
+c)Quentin Tarantino
+d)Christopher Nolan
 
-Are you in the mood for something light-hearted or serious?
+8) What is your preferred movie length?
+a)a shorter film(~90 minutes)
+b)average length(~1.5 to 2 hours)
+c)a long movie(~2.5 hours or more)
+
+9) Are you in the mood for something light-hearted or serious?
+a)light-hearted
+b)serious
+
+10) I want to watch a movie from ...?
+a)this year
+b)the past 2 years
+c)the past 5 years
+d)the past 10 years
+
+----------------------------------------------------------------------
 
 Do you prefer standalone movies or series?
 
@@ -25,19 +55,8 @@ what was the last movie that changed you perspective about life?
 
 what movie would you recommend to a good friend?
 
-I want to watch a movie from ...?
-A)this year
-B)the past 2 years
-C)the past 5 years
-D)the past 10 years
-
-Do you prefer really popular movies or indie films?
-
 what should the rating of a movie be like for you to watch it?
 
 How long do you prefer the movie to be?
 
-
-
-
-
+Name the last three movies/series that you watched recently.
