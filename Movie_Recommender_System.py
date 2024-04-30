@@ -14,15 +14,29 @@ print("\t\t------------------------------------------")
 print("\t\t\t  Press enter to continue...")
 input()
 
-#create profile
+#create a profile
 profile = {}
-#get information 
-profile['Name'] = input(" What is your name? : ")
-profile['LastName'] = input(" What is your LastName? : ")
-profile['Age'] = input(" How old are you? : ")
-profile['Email'] = input(" What is your email? : ")
-profile['PhoneNumber'] = input (" What is your phone number? :")
+#get user information
 
+profile['Name'] = input(" What is your name? : ")
+while (type(profile['Name'])!=str or profile['Name'].isalpha()==False):
+    profile['Name'] = input(" Please enter a valid name : ")
+
+profile['LastName'] = input(" What is your Last name? : ")
+while (type(profile['LastName'])!=str or profile['LastName'].isalpha()==False):
+    profile['LastName'] = input(" Please enter a valid last name : ")
+
+profile['Age'] = input(" How old are you? : ")
+while (profile['Age'].isnumeric()==False or int(profile['Age'])>125):
+    profile['Age'] = input(" Please enter a valid number : ")
+    
+profile['Email'] = input(" What is your email? : ")
+#email check: needs to end with @gmail.com or @yahoo.com && needs to be a string
+
+profile['PhoneNumber'] = input (" What is your phone number? : ")
+while (profile['PhoneNumber'].isnumeric()==False or len(profile['PhoneNumber'])>15):
+    profile['PhoneNumber'] = input(" Please enter a valid phone number : ")
+    
 #***********************************
 #There's a problem here:
 #run code to see what the issue is.
