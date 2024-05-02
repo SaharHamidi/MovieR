@@ -1,4 +1,5 @@
 
+
 #movies={"movie name":[year,IMDB ratings,director,cast,genre,time,rotten tomatoes]}
 movies={"Inception":[2010,9,"Christopher_Nolan",["Leonardo_Dicaprio","Cillian_Murphy","Tom_Hardy"],["action","sci-fi"],148,87],
         "The_dark_knight":[2008,9,"Christopher_Nolan",["Christian_Bale","Heath_Ledger","Gary_Oldman"],["action","crime"],152,84],
@@ -40,24 +41,48 @@ while (profile['PhoneNumber'].isnumeric()==False or len(profile['PhoneNumber'])>
 #***********************************
 #There's a problem here:
 #run code to see what the issue is.
-
+    
 #print profile
 print("\n Your profile:")
 for key, value in profile.items():
     print(f"{key}: {value}")
 
-#verify information
-    confirmation = input("press v to verify your information: ") 
-    if confirmation.lower() == 'v':
-        print("\n Your profile:")
-        for key, value in profile.items():
-            print(f"{key}: {value}")
-        break 
 
+#verify information
+confirmation = input("press v to verify your information: ") 
+if confirmation.lower() == 'v':
+    print("\n Your profile:")
+    for key, value in profile.items():
+          print(f"{key}: {value}")
+            
+    
 #confrim information
-    confirmation = input("Is the information correct?(Yes/No)")
-    if confirmation.lower() == 'Yes':
-        break
+confirmation = input("Is the information correct?(Yes/No)")
+#if confirmation.lower() == 'Yes':
+if confirmation.lower() == 'No':
+    profile['Name'] = input(" What is your name? : ")
+    while (type(profile['Name'])!=str or profile['Name'].isalpha()==False):
+        profile['Name'] = input(" Please enter a valid name : ")
+
+    profile['LastName'] = input(" What is your Last name? : ")
+    while (type(profile['LastName'])!=str or profile['LastName'].isalpha()==False):
+        profile['LastName'] = input(" Please enter a valid last name : ")
+
+    profile['Age'] = input(" How old are you? : ")
+    while (profile['Age'].isnumeric()==False or int(profile['Age'])>125):
+        profile['Age'] = input(" Please enter a valid number : ")
+    profile['Email'] = input(" What is your email? : ")
+#email check: needs to end with @gmail.com or @yahoo.com && needs to be a string
+
+    profile['PhoneNumber'] = input (" What is your phone number? : ")
+    while (profile['PhoneNumber'].isnumeric()==False or len(profile['PhoneNumber'])>15):
+        profile['PhoneNumber'] = input(" Please enter a valid phone number : ")
+else:
+    print("error")
+   
+
+        
+        
     #*********************************
     #else?
 
