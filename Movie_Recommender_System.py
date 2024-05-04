@@ -16,28 +16,28 @@ def welcome_page():
 
 def create_profile(profile={}):
     
-    profile['Name'] = input(" What is your name?:")
+    profile['Name'] = input("What is your name?:")
     while (type(profile['Name'])!=str or profile['Name'].isalpha()==False):
         profile['Name'] = input(" Please enter a valid name:")
 
-    profile['LastName'] = input(" What is your Last name?:")
+    profile['LastName'] = input("What is your Last name?:")
     while (type(profile['LastName'])!=str or profile['LastName'].isalpha()==False):
         profile['LastName'] = input(" Please enter a valid last name:")
 
-    profile['Age'] = input(" How old are you?:")
+    profile['Age'] = input("How old are you?:")
     while (profile['Age'].isnumeric()==False or int(profile['Age'])>125 or int(profile['Age'])<1):
         profile['Age'] = input(" Please enter a valid number:")
     
-    profile['Email'] = input(" What is your email?:")
+    profile['Email'] = input("What is your email?:")
     #while (profile['Email'].endswith('@gmail.com',-10,-1)==False or profile['Email'].endswith('@yahoo.com',-10,-1)==False):
         #profile['Email'] = input(" Please enter a valid email ending with @gmail.com or @yahoo.com : ")
     #install re module 
-    profile['PhoneNumber'] = input (" What is your phone number?:")
+    profile['PhoneNumber'] = input ("What is your phone number?:")
     while (profile['PhoneNumber'].isnumeric()==False or len(profile['PhoneNumber'])>15 or len(profile['PhoneNumber'])<11):
         profile['PhoneNumber'] = input(" Please enter a valid phone number:")
     
 def show_profile(profile={}):
-    print("\n Your profile:")
+    print("\nYour profile:")
     for key, value in profile.items():
         print(f"{key}: {value}")
 
