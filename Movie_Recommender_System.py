@@ -8,6 +8,19 @@ movies={"Inception":[2010,9,"Christopher_Nolan",["Leonardo_Dicaprio","Cillian_Mu
 #series={"movie name":[year,IMDB,director,cast,genre,time,rotten tomatoes]}
 series={"Harry_Potter":[2001,8,"Chris_Columbus",["Daniel_Radcliffe","Emma_Watson","Rupert_Grint"],["fantasy","drama"],1172,84]}
 
+points=[2,3,4,10,9,8,7,5,7,8]
+max=0
+count=0
+for i in points:
+    if i>=max:
+        max=i
+        index=count
+    count+=1
+print(max)
+points.remove(index)
+#loop 5 times
+print(points)
+
 def welcome_page():
     print("\n")
     print("\t\t********** Welcome to movie club! **********")
@@ -64,16 +77,20 @@ def verify_information(profile={},fav=[]):
     else:
         verify_information(profile,fav)
 
-def questionnaire(favourites=[]):
+def questionnaire(favourites=[]): 
     print("\nLet's find out what your preferences are.")
     print("Please answer the next 10 questions by choosing one of the options below.")
     print("(for example:a)\n")
     #question 1
     print("1)Do you prefer popular movies or indie films?\na)very popular shows\nb)indie movies\nc)doesn't matter to me\nd)both\n")
-    favourites.append(input("answer:"))
+    answer=input("answer:")
+        
+    #favourites.append(input("answer:"))
     #question 2
     print("\n2)Which rating do you think is most valid?\na)IMDB\nb)Rotten Tomatos\nc)neither\nd)both\n")
-    favourites.append(input("answer:"))
+    #favourites.append(input("answer:"))
+    if answer='a':
+        favourites.append(7)
     #question 3
     print("\n3)Choose two of the genres below that you enjoy the most:\na)comedy\nb)action\nc)drama\nd)horror\n")
     favourites.append(input("answer:"))
@@ -114,6 +131,5 @@ f=[]
 verify_information(p,f)
 #suggesting top 5 movies for this user:
 
-
-    
-
+def compare(fav=[],movies[]):
+        
