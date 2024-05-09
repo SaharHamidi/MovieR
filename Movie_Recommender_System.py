@@ -8,19 +8,6 @@ movies={"Inception":[2010,9,"Christopher_Nolan",["Leonardo_Dicaprio","Cillian_Mu
 #series={"movie name":[year,IMDB,director,cast,genre,time,rotten tomatoes]}
 series={"Harry_Potter":[2001,8,"Chris_Columbus",["Daniel_Radcliffe","Emma_Watson","Rupert_Grint"],["fantasy","drama"],1172,84]}
 
-#fix this and make a max function out of it
-points=[]
-max=0
-count=0
-for i in points:
-    if i>=max:
-        max=i
-        index=count
-    count+=1
-print(max)
-points.remove(index)
-#loop 5 times
-print(points)
 
 def welcome_page():
     print("\n")
@@ -85,46 +72,100 @@ def questionnaire(favourites=[]):
 
     #question 1
     print("1)I want to watch a movie from ...?\na)this year\nb)the past 2 years\nc)the past 5 years\nd)the past 10 years\n")
-    favourites.append(input("answer:"))
+    answer=(input("answer:"))
+    while answer!='a' and answer!='b' and  answer!='c' and answer!='d' :
+        input("Please enter a valid choice:\n") 
+    if answer=='a':
+        favourites.append("2024")
+    elif answer=='b':
+        favourites.append("2022")
+    elif answer=='c':
+        favourites.append("2019")
+    else :
+        favourites.append("2014")
+    
 
     #question 2
     print("\n2)Which rating do you think is most valid?\na)IMDB\nb)Rotten Tomatos\nc)neither\nd)both\n")
-    #favourites.append(input("answer:"))
+    answer=(input("answer:"))
+    while answer!='a' and answer!='b' and  answer!='c' and answer!='d' :
+        input("Please enter a valid choice:\n") 
     if answer=='a':
-        favourites.append(7)
-        
+        favourites.append("IMDB")
+    elif answer=='b':
+        favourites.append("Rotten Tomatos")
+    elif answer=='c':
+        favourites.append("neither")
+    else :
+        favourites.append("both")
+      
     #question 3
     print("\n3)Which one of the directors below would you want to meet in real life?")
     print("a)Steven Spielberg\nb)Martin Scorsese\nc)Quentin Tarantino\nd)Christopher Nolan\n")
     favourites.append(input("answer:"))
     
+    
     #question 4
     print("\n4)Which one of these actors/actresses have you previously seen in a movie)Tom Hanks\nb)Meryl Streep\nc)Leonardo Dicaprio\nd)none\n")
     favourites.append(input("answer:"))
-
+    
     #question 5
     print("\n5)Choose two of the genres below that you enjoy the most:\na)comedy\nb)action\nc)drama\nd)horror\n")
     favourites.append(input("answer:"))
 
     #question 6
     print("\n6)What is your preferred movie length?\na)a shorter film(~90 minutes)\nb)average length(~1.5 to 2 hours)\nc)a long movie(~2.5 hours or more)\n")
-    favourites.append(input("answer:"))  
+    answer=(input("answer:"))
+    while answer!='a' and answer!='b' and  answer!='c':
+        input("Please enter a valid choice:\n") 
+    if answer=='a':
+        favourites.append(90)
+    elif answer=='b':
+        favourites.append(120)
+    else:
+        favourites.append(1000)
     
     #question 7
     print("\n8)Which one of these plots seems more interesting to you?\na)A mafia patriarch transfers control of his empire to his reluctant son")
     print("b)A tragic love stroy unfolds abroad the ill-fated Titanic ship")
     print("c)Two imprisoned men bond over a number of years, finding solace and eventual redemption through acts of common decency")
     print("d)Genetically engineered dinosaurs wreak havoc after scaping in a theme park preview\n")
-    favourites.append(input("answer:"))
+    answer=(input("answer:"))
+    while answer!='a' and answer!='b' and  answer!='c' and answer!='d' :
+        input("Please enter a valid choice:\n") 
+    if answer=='a':
+        favourites.append("God father")
+    elif answer=='b':
+        favourites.append("Titanic")
+    elif answer=='c':
+        favourites.append("Shawshank redemption")
+    else :
+        favourites.append("jurassic park")
 
     #question 8
     print("\n9)What experience are you looking for when watching a movie?\na)a relaxing time\nb)a new concept to think about\nc)to learn about people and life")
     print("d)excitement or fun\n")
-    favourites.append(input("answer:"))
+    answer=(input("answer:"))
+    while answer!='a' and answer!='b' and  answer!='c' and answer!='d' :
+        input("Please enter a valid choice:\n") 
+    if answer=='a':
+        favourites.append(["romance","comedy"])
+    elif answer=='b':
+        favourites.append(["psychology"])
+    elif answer=='c':
+        favourites.append(["biography","drama"])
+    else :
+        favourites.append(["comedy","adventure","horror","sci-fi","crime","thriller"])
 
     #question 19
     print("\n10)Are you in the mood for something light-hearted or serious?\na)light-hearted\nb)serious\n")
-    favourites.append(input("answer:"))
+    answer=(input("answer:"))
+    while answer!='a' and answer!='b':
+        input("Please enter a valid choice:\n") 
+    if answer=='a':
+        favourites.append(["romance","comedy","biography","adventure"])
+    else :
+        favourites.append(["horror","sci-fi","crime","thriller","sci-fi"])
     
 
 #starting, creating a profile, verifying the info then finding what the user's taste is in movies.
