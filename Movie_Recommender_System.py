@@ -167,7 +167,14 @@ def questionnaire(favourites=[]):
     else :
         favourites.append(["horror","sci-fi","crime","thriller","sci-fi"])
     
-
+def max(points=[]):
+	max=0
+	for i in points:
+            if i>=max:
+                max=i
+	points.remove[max]
+	return max
+	
 #starting, creating a profile, verifying the info then finding what the user's taste is in movies.
 p = {}
 welcome_page()
@@ -179,5 +186,17 @@ f=[]
 verify_information(p,f)
 #suggesting top 5 movies for this user:
 
-def compare(fav=[],movies=[]):
-        print("something")
+points=[]
+#compare()
+for i in range(0,5):
+    index=max(points) 
+    print(movies[index])
+
+def compare(fav=[],movies=[],points=[]):
+    for i in len(movies)-1:
+        for j in len(movies[0]):
+            if movies[i][j]>=fav[0]:
+                points[i]+=1
+            if fav=="IMDB":
+                if movies[i][j]>=8:
+                    points[i]+=1
