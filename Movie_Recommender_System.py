@@ -108,29 +108,21 @@ def questionnaire(favourites=[]):
 
     #question 6
     print("\n6)What is your preferred movie length?\na)a shorter film(~90 minutes)\nb)average length(~1.5 to 2 hours)\nc)a long movie(~2.5 hours or more)\n")
-    favourites.append(input("answer:"))
+    favourites.append(input("answer:"))  
     
-    #--------------------------
-    #what do I do with these??
-    #--------------------------
     #question 7
-    print("\n7)Do you prefer popular movies or indie films?\na)very popular shows\nb)indie movies\nc)doesn't matter to me\nd)both\n")
-    answer=input("answer:")    
-    #favourites.append(input("answer:"))
-    
-    #question 8
     print("\n8)Which one of these plots seems more interesting to you?\na)A mafia patriarch transfers control of his empire to his reluctant son")
     print("b)A tragic love stroy unfolds abroad the ill-fated Titanic ship")
     print("c)Two imprisoned men bond over a number of years, finding solace and eventual redemption through acts of common decency")
     print("d)Genetically engineered dinosaurs wreak havoc after scaping in a theme park preview\n")
     favourites.append(input("answer:"))
 
-    #question 9
+    #question 8
     print("\n9)What experience are you looking for when watching a movie?\na)a relaxing time\nb)a new concept to think about\nc)to learn about people and life")
     print("d)excitement or fun\n")
     favourites.append(input("answer:"))
 
-    #question 10
+    #question 19
     print("\n10)Are you in the mood for something light-hearted or serious?\na)light-hearted\nb)serious\n")
     favourites.append(input("answer:"))
     
