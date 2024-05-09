@@ -9,7 +9,7 @@ movies={"Inception":[2010,9,"Christopher_Nolan",["Leonardo_Dicaprio","Cillian_Mu
 series={"Harry_Potter":[2001,8,"Chris_Columbus",["Daniel_Radcliffe","Emma_Watson","Rupert_Grint"],["fantasy","drama"],1172,84]}
 
 #fix this and make a max function out of it
-points=[2,3,4,10,9,8,7,5,7,8]
+points=[]
 max=0
 count=0
 for i in points:
