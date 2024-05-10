@@ -107,7 +107,7 @@ def questionnaire(favourites=[]):
     favourites.append(answer)
     
     #question 4
-    print("\n4)Which one of these actors/actresses have you previously seen in a movie)Tom Hanks\nb)Meryl Streep\nc)Leonardo Dicaprio\nd)none\n")
+    print("\n4)Which one of these actors/actresses have you previously seen in a movie?\na)Tom Hanks\nb)Meryl Streep\nc)Leonardo Dicaprio\nd)none\n")
     answer=(input("answer:"))
     while answer!='a' and answer!='b' and  answer!='c' and answer!='d' :
         answer=input("Please choose one of the options:\n")
