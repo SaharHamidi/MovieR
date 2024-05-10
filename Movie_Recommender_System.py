@@ -1,12 +1,11 @@
 
-#movies={"movie name":[year,IMDB ratings,director,cast,genre,time,rotten tomatoes]}
-movies={"Inception":[2010,9,"Christopher Nolan",["Leonardo Dicaprio","Cillian Murphy","Tom Hardy"],["action","sci-fi"],148,87],
-        "The dark knight":[2008,9,"Christopher Nolan",["Christian Bale","Heath Ledger","Gary Oldman"],["action","crime"],152,84],
-        "Interstellar":[2014,9,"Christopher Nolan",["Matthew McConaughey","Jessica Chastain","Anne Hathaway"],["adventure","sci-fi"],168,73],
-        "Arrival":[2016,8,"Denis Villeleuve",["Jeremy Rennner","Amy Adams","Michael Stuhlbarg"],["mystery","sci-fi"],116,94],
-        "Little women":[2019,8,"Greta Gerwig",["Saoirse Ronan","Timothee Challamet","Florance Pugh","Emma Watson"],["romance","drama"],135,95]}
-#series={"movie name":[year,IMDB,director,cast,genre,time,rotten tomatoes]}
-series={"Harry Potter":[2001,8,"Chris Columbus",["Daniel Radcliffe","Emma Watson","Rupert Grint"],["fantasy","drama"],1172,84]}
+#movies={"movie name":[year,IMDB ratings,director,cast,genre,time,series or movies,rotten tomatoes]}
+movies={"Inception":[2010,9,"Christopher Nolan",["Leonardo Dicaprio","Cillian Murphy","Tom Hardy"],["action","sci-fi"],148,'m',87],
+        "The dark knight":[2008,9,"Christopher Nolan",["Christian Bale","Heath Ledger","Gary Oldman"],["action","crime"],152,'m',84],
+        "Interstellar":[2014,9,"Christopher Nolan",["Matthew McConaughey","Jessica Chastain","Anne Hathaway"],["adventure","sci-fi"],168,'m',73],
+        "Arrival":[2016,8,"Denis Villeleuve",["Jeremy Rennner","Amy Adams","Michael Stuhlbarg"],["mystery","sci-fi"],116,'m',94],
+        "Little women":[2019,8,"Greta Gerwig",["Saoirse Ronan","Timothee Challamet","Florance Pugh","Emma Watson"],["romance","drama"],135,'m',95],
+        "Harry Potter":[2001,8,"Chris Columbus",["Daniel Radcliffe","Emma Watson","Rupert Grint"],["fantasy","drama"],1172,'s',84]}
 
 
 def welcome_page():
@@ -124,7 +123,7 @@ def questionnaire(favourites=[]):
     #question 6
     print("\n6)What is your preferred movie length?\na)a shorter film(~90 minutes)\nb)average length(~1.5 to 2 hours)\nc)a long movie(~2.5 hours or more)\n")
     answer=(input("answer:"))
-    while answer!='a' and answer!='b' and  answer!='c' and answer!='d' :
+    while answer!='a' and answer!='b' and  answer!='c':
         answer=input("Please choose one of the options:\n") 
     if answer=='a':
         favourites.append(90)
@@ -134,7 +133,7 @@ def questionnaire(favourites=[]):
         favourites.append(1000)
     
     #question 7
-    print("\n8)Which one of these plots seems more interesting to you?\na)A mafia patriarch transfers control of his empire to his reluctant son")
+    print("\n7)Which one of these plots seems more interesting to you?\na)A mafia patriarch transfers control of his empire to his reluctant son")
     print("b)A tragic love stroy unfolds abroad the ill-fated Titanic ship")
     print("c)Two imprisoned men bond over a number of years, finding solace and eventual redemption through acts of common decency")
     print("d)Genetically engineered dinosaurs wreak havoc after scaping in a theme park preview\n")
@@ -151,7 +150,7 @@ def questionnaire(favourites=[]):
         favourites.append("Jurassic park")
 
     #question 8
-    print("\n9)What experience are you looking for when watching a movie?\na)a relaxing time\nb)a new concept to think about\nc)to learn about people and life")
+    print("\n8)What experience are you looking for when watching a movie?\na)a relaxing time\nb)a new concept to think about\nc)to learn about people and life")
     print("d)excitement or fun\n")
     answer=(input("answer:"))
     while answer!='a' and answer!='b' and  answer!='c' and answer!='d' :
@@ -165,15 +164,25 @@ def questionnaire(favourites=[]):
     else :
         favourites.append(["comedy","adventure","horror","sci-fi","crime","thriller"])
 
-    #question 19
-    print("\n10)Are you in the mood for something light-hearted or serious?\na)light-hearted\nb)serious\n")
+    #question 9
+    print("\n9)Are you in the mood for something light-hearted or serious?\na)light-hearted\nb)serious\n")
     answer=(input("answer:"))
-    while answer!='a' and answer!='b' and  answer!='c' and answer!='d' :
+    while answer!='a' and answer!='b':
         answer=input("Please choose one of the options:\n") 
     if answer=='a':
         favourites.append(["romance","comedy","biography","adventure"])
     else :
         favourites.append(["horror","sci-fi","crime","thriller","sci-fi"])
+
+    #question 10
+    print("\n10) Do you prefer stand-alone movies or series?\na)films\nb)series\nc)neither\nd)both")
+    answer=(input("answer:"))
+    while answer!='a' and answer!='b' and  answer!='c' and answer!='d' :
+        answer=input("Please choose one of the options:\n")
+    if answer=='a':
+        favourites.append('s')
+    elif answer=='b':
+        favourites.append('m')
     
 def max_index(points=[]):
     max=0
@@ -185,30 +194,77 @@ def max_index(points=[]):
         count+=1
     points.remove[max]
     return index
-	
-#starting,creating a profile,verifying the info,finding out the user's taste.
-p = {}
-welcome_page()
-create_profile(p)
-show_profile(p)
-
-f=[] #list of user's favourites
-verify_information(p,f)
 
 #ranking movies based on user's answers
-points=[] #for each movie
-def compare(fav=[],movies=[],points=[]):
-    for i in len(movies)-1:
-        for j in len(movies[0]):
-            if movies[i][j]>=fav[0]:
+def compare(movies=[],fav=[],points=[]):
+    for i in len(movies):
+        #year
+        if movies[i][0]>=fav[0]:
+            points[i]+=1
+        #IMDB / RT / neither / both
+        if fav[1]=="IMDB":
+            if movies[i][1]>=8:
                 points[i]+=1
-            if fav=="IMDB":
-                if movies[i][j]>=8:
-                    points[i]+=1
+        elif fav[1]=="Rotten Tomatos":
+            if movies[i][7]>=80:
+                points[i]+=1
+        elif fav[1]=="both":
+            if movies[i][1]>=8:
+                points[i]+=1
+            if movies[i][7]>=80:
+                points[i]+=1
+        #director
+        if fav[2]==movies[i][2]:
+            points[i]+=1
+        #cast
+        for j in movies[i][3]:
+            if fav[3]==movies[i][3][j]:
+                points[i]+=1
+        #genre
+        for j in movies[i][4]:
+            if fav[4]==movies[i][4][j]:
+                points[i]+=1
+        #movie length
+        if movies[i][5]<=fav[5]:
+            points[i]+=1
+        #plots
+        if movies[i]==fav[6]:
+            points[i]+=1
+        #experience
+        for j in movies[i][4]:
+            for k in fav[7]:
+                if movies[i][4][j]==fav[7][k]:
+                    points+=1
+        #mood
+        for j in movies[i][4]:
+            for k in fav[8]:
+                if movies[i][4][j]==fav[8][k]:
+                    points+=1
+        #series or movies
+        if movies[i][6]==fav[9]:
+            points+=1
 
+#starting,creating a profile,verifying the info,finding out the user's taste.
+profile = {}
+welcome_page()
+create_profile(profile)
+show_profile(profile)
+
+favs=[] #list of user's favourites
+verify_information(profile,favs)
+
+#assigning points to each movie
+points=[] 
+#initial points = 0
+for i in range(0,20):
+    points.append(0)
+    print("initial points = ",points[i])
+
+#assigning points:
+compare(movies,favs,points)
+        
 #presenting top 5 movies
-def top_five(points=[],movies={},fav=[]):
-    print("5 Movies that you might enjoy:")
-    for i in range(0,5):
-        index=max_index(points) 
-        print(movies[index])
+print("5 Movies that you might enjoy:")
+for i in range(0,5):
+    index=max_index(points) 
+    print(movies[index])
