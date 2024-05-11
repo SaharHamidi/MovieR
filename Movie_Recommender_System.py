@@ -33,7 +33,7 @@ def create_profile(profile={}):
         #profile['Email'] = input(" Please enter a valid email ending with @gmail.com or @yahoo.com : ")
     #install re module 
     profile['PhoneNumber'] = input ("What is your phone number?:")
-    while (profile['PhoneNumber'].isnumeric()==False or len(profile['PhoneNumber'])>15 or len(profile['PhoneNumber'])<11):
+    while (profile['PhoneNumber'].isnumeric()==False or len(profile['PhoneNumber'])>15 or len(profile['PhoneNumber'])<6):
         profile['PhoneNumber'] = input("-Please enter a valid phone number:")
     
 def show_profile(profile={}):
@@ -175,7 +175,7 @@ def questionnaire(favourites=[]):
         favourites.append(["horror","sci-fi","crime","thriller","sci-fi"])
 
     #question 10
-    print("\n10) Do you prefer stand-alone movies or series?\na)films\nb)series\nc)neither\nd)both")
+    print("\n10) Do you prefer stand-alone movies or series?\na)films\nb)series\nc)neither\nd)both\n")
     answer=(input("answer:"))
     while answer!='a' and answer!='b' and  answer!='c' and answer!='d' :
         answer=input("Please choose one of the options:\n")
@@ -192,57 +192,60 @@ def max_index(points=[]):
             max=i
             index=count
         count+=1
-    points.remove[max]
+    points.remove(max)
     return index
 
 #ranking movies based on user's answers
 def compare(movies=[],fav=[],points=[]):
-    for i in len(movies):
+    m_index=0 #index of each movie
+    for i in movies:
         #year
-        if movies[i][0]>=fav[0]:
-            points[i]+=1
+        if int(movies[i][0])>=int(fav[0]):
+            points[m_index]+=1
         #IMDB / RT / neither / both
         if fav[1]=="IMDB":
-            if movies[i][1]>=8:
-                points[i]+=1
+            if int(movies[i][1])>=8:
+                points[m_index]+=1
         elif fav[1]=="Rotten Tomatos":
-            if movies[i][7]>=80:
-                points[i]+=1
+            if int(movies[i][7])>=80:
+                points[m_index]+=1
         elif fav[1]=="both":
-            if movies[i][1]>=8:
-                points[i]+=1
-            if movies[i][7]>=80:
-                points[i]+=1
+            if int(movies[i][1])>=8:
+                points[m_index]+=1
+            if int(movies[i][7])>=80:
+                points[m_index]+=1
         #director
         if fav[2]==movies[i][2]:
-            points[i]+=1
+            points[m_index]+=1
         #cast
-        for j in movies[i][3]:
+        for j in range(len(movies[i][3])):
             if fav[3]==movies[i][3][j]:
-                points[i]+=1
+                points[m_index]+=1
         #genre
-        for j in movies[i][4]:
+        for j in range(len(movies[i][4])):
             if fav[4]==movies[i][4][j]:
-                points[i]+=1
+                points[m_index]+=1
         #movie length
-        if movies[i][5]<=fav[5]:
-            points[i]+=1
+        if int(movies[i][5])<=int(fav[5]):
+            points[m_index]+=1
         #plots
         if movies[i]==fav[6]:
-            points[i]+=1
+            points[m_index]+=1
         #experience
-        for j in movies[i][4]:
-            for k in fav[7]:
+        for j in range(len(movies[i][4])):
+            for k in range(len(fav[7])):
                 if movies[i][4][j]==fav[7][k]:
-                    points+=1
+                    points[m_index]+=1
         #mood
-        for j in movies[i][4]:
-            for k in fav[8]:
+        for j in range(len(movies[i][4])):
+            for k in range(len(fav[8])):
                 if movies[i][4][j]==fav[8][k]:
-                    points+=1
+                    points[m_index]+=1
         #series or movies
         if movies[i][6]==fav[9]:
-            points+=1
+            points[m_index]+=1
+
+        m_index+=1 #next movie
 
 #starting,creating a profile,verifying the info,finding out the user's taste.
 profile = {}
@@ -256,15 +259,16 @@ verify_information(profile,favs)
 #assigning points to each movie
 points=[] 
 #initial points = 0
-for i in range(0,20):
-    points.append(0)
-    print("initial points = ",points[i])
+for i in range(20):
+    num=int(0)
+    points.append(num)
+    print("\ninitial points = ",points[i])
 
 #assigning points:
 compare(movies,favs,points)
         
 #presenting top 5 movies
-print("5 Movies that you might enjoy:")
+print("\n5 Movies that you might enjoy:")
 for i in range(0,5):
     index=max_index(points) 
-    print(movies[index])
+    print(index)
