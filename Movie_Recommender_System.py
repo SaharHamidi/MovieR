@@ -192,7 +192,8 @@ def max_index(points=[]):
             max=i
             index=count
         count+=1
-    points.remove(max)
+    points[index]=0
+    print("\n",points,"\n")
     return index
 
 #ranking movies based on user's answers
@@ -262,13 +263,16 @@ points=[]
 for i in range(20):
     num=int(0)
     points.append(num)
-    print("\ninitial points = ",points[i])
 
 #assigning points:
 compare(movies,favs,points)
-        
+print("\n",points,"\n")
+
+movie_names=list(movies.keys())
+print("\n",movie_names,"\n")
+
 #presenting top 5 movies
 print("\n5 Movies that you might enjoy:")
 for i in range(0,5):
     index=max_index(points) 
-    print(index)
+    print(movie_names[index])
