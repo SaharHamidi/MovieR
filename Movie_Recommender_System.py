@@ -1,12 +1,25 @@
 
-#movies={"movie name":[year,IMDB ratings,director,cast,genre,time,series or movies,rotten tomatoes]}
-movies={"Inception":[2010,9,"Christopher Nolan",["Leonardo Dicaprio","Cillian Murphy","Tom Hardy"],["action","sci-fi"],148,'m',87],
-        "The dark knight":[2008,9,"Christopher Nolan",["Christian Bale","Heath Ledger","Gary Oldman"],["action","crime"],152,'m',84],
-        "Interstellar":[2014,9,"Christopher Nolan",["Matthew McConaughey","Jessica Chastain","Anne Hathaway"],["adventure","sci-fi"],168,'m',73],
-        "Arrival":[2016,8,"Denis Villeleuve",["Jeremy Rennner","Amy Adams","Michael Stuhlbarg"],["mystery","sci-fi"],116,'m',94],
-        "Little women":[2019,8,"Greta Gerwig",["Saoirse Ronan","Timothee Challamet","Florance Pugh","Emma Watson"],["romance","drama"],135,'m',95],
-        "Harry Potter":[2001,8,"Chris Columbus",["Daniel Radcliffe","Emma Watson","Rupert Grint"],["fantasy","drama"],1172,'s',84]}
-
+#movies={"movie name":[year,IMDB ratings,director,cast,genre,time,series or movies,age-limit,rotten tomatoes]}
+movies={"Inception":[2010,9,"Christopher Nolan",["Leonardo Dicaprio","Cillian Murphy","Tom Hardy"],["action","sci-fi"],148,'m','+',87],
+        "The dark knight":[2008,9,"Christopher Nolan",["Christian Bale","Heath Ledger","Gary Oldman"],["action","crime"],152,'m','+',84],
+        "Interstellar":[2014,9,"Christopher Nolan",["Matthew McConaughey","Jessica Chastain","Anne Hathaway"],["adventure","sci-fi"],168,'m','+',73],
+        "Arrival":[2016,8,"Denis Villeleuve",["Jeremy Rennner","Amy Adams","Michael Stuhlbarg"],["mystery","sci-fi"],116,'m','+',94],
+        "Little women":[2019,8,"Greta Gerwig",["Saoirse Ronan","Timothee Challamet","Florance Pugh","Emma Watson"],["romance","drama"],135,'m','+',95],
+        "Harry Potter":[2001,8,"Chris Columbus",["Daniel Radcliffe","Emma Watson","Rupert Grint"],["fantasy","drama"],1172,'s','+',84],
+        "Sherlock":[2010,9,"Paul McGuigan",["Benedict Cumberbatch","Martin Freeman","Andrew Scott"],["mystery","drama"],900,'s','+',78],
+        "Ted Lasso":[2020,9,"Declan Lowney",["Hannah Waddingham","Jason Sudeikis","Juno Temple"],["comedy,drama"],1100,'s','-',90],
+        "Looking for Alaska":[2019,8,"Josh Schwartz",["Kristine Froseth","Charlie Plummer","Denny Love"],["drama","tragedy"],424,'s','+',92],
+        "Get Out":[2017,8,"Jordan Peele",["Daniel Kaluuya","Allison Williams","Catherine Keener"],["horror","comedy"],104,'m','-',98],
+        "Knives out":[2019,8,"Rian Johnson",["Ana de Armas","Chris Evans","Katherine Langford"],["mystery","thriller"],130,'m','+',97],
+        "Prisoners":[2013,8,"Denis Villeneuve",["Jake Gyllenhaal","Hugh Jackman","Dylan Minnette"],["thriller","crime"],153,'m','+',81],
+        "Jojo Rabbite":[2019,8,"Taika Waititi",["Taika Waititi","Scarlett Johansson","Roman Griffin Davis"],["comedy","war"],108,'m','+',80],
+        "Squid Game":[2021,8,"Hwang Dong-hyuk",["Jung Ho-yeon","Lee Jung-jae","Wi Ha-joon"],["horror","action"],465,'s','-',95],
+        "Dahmer – Monster":[2022,8,"Ryan Murphy",["Evan Peters","Niecy Nash","Molly Ringwald"],["biographical","crime"],550,'s','-',57],
+        "Stranger Things":[2016,9,"Duffer Brothers",["Millie Bobby Brown","Joe Keery","Noah Schnapp"],["sci-fi","drama"],2102,'s','+',92],
+        "The Queen's Gambit":[2020,9,"Scott Frank",["Anya Taylor-Joy","Harry Melling","Marielle Heller"],["drama"],385,'s','+',96],
+        "Dark":[2017,9,"Baran bo Odar",["Louis Hofmann","Lisa Vicari","Gina Stiebitz"],["mystery","thriller"],2100,'s','-',95],
+        "Scenes from a Marriage":[2021,8,"Hagai Levi",["Oscar Isaac","Jessica Chastain","Sunita Mani"],["drama"],448,'s','-',83],
+        "Mare of Easttown":[2021,8,"Craig Zobel",["Kate Winslet","Evan Peters","Angourie Rice"],["crime","drama"],420,'s','-',95]}
 
 def welcome_page():
     print("\n")
@@ -27,14 +40,7 @@ def create_profile(profile={}):
     profile['Age'] = input("How old are you?:")
     while (profile['Age'].isnumeric()==False or int(profile['Age'])>125 or int(profile['Age'])<1):
         profile['Age'] = input("-Please enter a valid number:")
-    
-    profile['Email'] = input("What is your email?:")
-    #while (profile['Email'].endswith('@gmail.com',-10,-1)==False or profile['Email'].endswith('@yahoo.com',-10,-1)==False):
-        #profile['Email'] = input(" Please enter a valid email ending with @gmail.com or @yahoo.com : ")
-    #install re module 
-    profile['PhoneNumber'] = input ("What is your phone number?:")
-    while (profile['PhoneNumber'].isnumeric()==False or len(profile['PhoneNumber'])>15 or len(profile['PhoneNumber'])<6):
-        profile['PhoneNumber'] = input("-Please enter a valid phone number:")
+        
     
 def show_profile(profile={}):
     print("\nYour profile:")
@@ -252,7 +258,7 @@ def compare(movies=[],fav=[],points=[]):
 profile = {}
 welcome_page()
 create_profile(profile)
-show_profile(profile)
+
 
 favs=[] #list of user's favourites
 verify_information(profile,favs)
