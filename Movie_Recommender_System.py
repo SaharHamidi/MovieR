@@ -1,4 +1,3 @@
-
 #movies={"movie name":[year,IMDB ratings,director,cast,genre,time,series or movies,age-limit,rotten tomatoes]}
 movies={"Inception":[2010,9,"Christopher Nolan",["Leonardo Dicaprio","Cillian Murphy","Tom Hardy"],["action","sci-fi"],148,'m','+',87],
         "The dark knight":[2008,9,"Christopher Nolan",["Christian Bale","Heath Ledger","Gary Oldman"],["action","crime"],152,'m','+',84],
@@ -12,9 +11,9 @@ movies={"Inception":[2010,9,"Christopher Nolan",["Leonardo Dicaprio","Cillian Mu
         "Get Out":[2017,8,"Jordan Peele",["Daniel Kaluuya","Allison Williams","Catherine Keener"],["horror","comedy"],104,'m','-',98],
         "Knives out":[2019,8,"Rian Johnson",["Ana de Armas","Chris Evans","Katherine Langford"],["mystery","thriller"],130,'m','+',97],
         "Prisoners":[2013,8,"Denis Villeneuve",["Jake Gyllenhaal","Hugh Jackman","Dylan Minnette"],["thriller","crime"],153,'m','+',81],
-        "Jojo Rabbite":[2019,8,"Taika Waititi",["Taika Waititi","Scarlett Johansson","Roman Griffin Davis"],["comedy","war"],108,'m','+',80],
+        "Jojo Rabbit":[2019,8,"Taika Waititi",["Taika Waititi","Scarlett Johansson","Roman Griffin Davis"],["comedy","war"],108,'m','+',80],
         "Squid Game":[2021,8,"Hwang Dong-hyuk",["Jung Ho-yeon","Lee Jung-jae","Wi Ha-joon"],["horror","action"],465,'s','-',95],
-        "Dahmer – Monster":[2022,8,"Ryan Murphy",["Evan Peters","Niecy Nash","Molly Ringwald"],["biographical","crime"],550,'s','-',57],
+        "Dahmer Monster":[2022,8,"Ryan Murphy",["Evan Peters","Niecy Nash","Molly Ringwald"],["biographical","crime"],550,'s','-',57],
         "Stranger Things":[2016,9,"Duffer Brothers",["Millie Bobby Brown","Joe Keery","Noah Schnapp"],["sci-fi","drama"],2102,'s','+',92],
         "The Queen's Gambit":[2020,9,"Scott Frank",["Anya Taylor-Joy","Harry Melling","Marielle Heller"],["drama"],385,'s','+',96],
         "Dark":[2017,9,"Baran bo Odar",["Louis Hofmann","Lisa Vicari","Gina Stiebitz"],["mystery","thriller"],2100,'s','-',95],
@@ -22,34 +21,41 @@ movies={"Inception":[2010,9,"Christopher Nolan",["Leonardo Dicaprio","Cillian Mu
         "Mare of Easttown":[2021,8,"Craig Zobel",["Kate Winslet","Evan Peters","Angourie Rice"],["crime","drama"],420,'s','-',95]}
 
 def welcome_page():
-    print("\n")
-    print("\t\t********** Welcome to movie club! **********")
-    print("\t\t------------------------------------------")
-    input("\t\t\t  Press enter to continue...\n")
+    
+    print("\n|-------------------------------------------------------|")
+    print("|\t\t\t\t\t\t\t|")
+    print("|\t\tWelcome to the movie club!\t\t|")
+    print("|\t\t\t\t\t\t\t|")
+    print("|-------------------------------------------------------|")
+    print("|\t\t\t\t\t\t\t|")
+    print("|\t\tPress enter to continue...\t\t|")
+    print("|\t\t\t\t\t\t\t|")
+    print("|-------------------------------------------------------|\n")
+    input()
 
 def create_profile(profile={}):
 
-    profile['Name'] = input("What is your first name?:")
-    while (type(profile['Name'])!=str or profile['Name'].isalpha()==False):
-        profile['Name'] = input("-Please enter a valid first name:")
+    profile['name'] = input("What is your first name:")
+    while (type(profile['name'])!=str or profile['name'].isalpha()==False):
+        profile['name'] = input("-Please enter a valid first name:")
+        
 
-    profile['LastName'] = input("What is your Last name?:")
-    while (type(profile['LastName'])!=str or profile['LastName'].isalpha()==False):
-        profile['LastName'] = input("-Please enter a valid last name:")
+    profile['lastName'] = input("What is your Last name:")
+    while (type(profile['lastName'])!=str or profile['lastName'].isalpha()==False):
+        profile['lastName'] = input("-Please enter a valid last name:")
 
-    profile['Age'] = input("How old are you?:")
-    while (profile['Age'].isnumeric()==False or int(profile['Age'])>125 or int(profile['Age'])<1):
-        profile['Age'] = input("-Please enter a valid number:")
+    profile['age'] = input("How old are you:")
+    while (profile['age'].isnumeric()==False or int(profile['age'])>125 or int(profile['age'])<1):
+        profile['age'] = input("-Please enter a valid number:")
         
     
 def show_profile(profile={}):
-    print("\nYour profile:")
-    for key, value in profile.items():
-        print(f"{key}: {value}")
+    print(f"\nYour name is {profile['name']} {profile['lastName']}, and you're {profile['age']} years old.\n")
 
 def confirmation(profile={},fav=[]):
-    confirm = input("Is the information correct?(yes/no)") 
+    confirm = input("Is this information correct?(yes/no):") 
     if confirm.lower() == 'no':
+        print("\nPlease re-enter your information:")
         profile={}
         create_profile(profile)
         show_profile(profile)
@@ -61,7 +67,7 @@ def confirmation(profile={},fav=[]):
         
         
 def verify_information(profile={},fav=[]):
-    confirm = input("Press v to verify your information or press s to skip:")
+    confirm = input("\nPress v to verify your information or press s to skip:")
     if confirm.lower() == 'v':
         show_profile(profile)
         confirmation(profile,fav)
@@ -73,8 +79,7 @@ def verify_information(profile={},fav=[]):
 def questionnaire(favourites=[]): 
 
     print("\nLet's find out what your preferences are.")
-    print("Please answer the next 10 questions by choosing one of the options below.")
-    print("(for example:a)\n")
+    print("Please answer the next 10 questions by choosing one of \nthe options below.(for example:a)\n")
 
     #question 1
     print("1)I want to watch a movie from ...?\na)this year\nb)the past 2 years\nc)the past 5 years\nd)the past 10 years\n")
@@ -110,21 +115,42 @@ def questionnaire(favourites=[]):
     answer=(input("answer:"))
     while answer!='a' and answer!='b' and  answer!='c' and answer!='d' :
         answer=input("Please choose one of the options:\n")
-    favourites.append(answer)
+    if answer=='a':
+        favourites.append("Steven Spielberg")
+    elif answer=='b':
+        favourites.append("Martin Scorsese")
+    elif answer=='c':
+        favourites.append("Quentin Tarantino")
+    else :
+        favourites.append("Christopher Nolan")
     
     #question 4
-    print("\n4)Which one of these actors/actresses have you previously seen in a movie?\na)Tom Hanks\nb)Meryl Streep\nc)Leonardo Dicaprio\nd)none\n")
+    print("\n4)Which one of these actors/actresses have you previously seen in a movie?\na)Tom Hardy\nb)Emma Watson\nc)Jake Gyllenhaal\nd)none\n")
     answer=(input("answer:"))
     while answer!='a' and answer!='b' and  answer!='c' and answer!='d' :
         answer=input("Please choose one of the options:\n")
-    favourites.append(answer)
+    if answer=='a':
+        favourites.append("Tom Hardy")
+    elif answer=='b':
+        favourites.append("Emma Watson")
+    elif answer=='c':
+        favourites.append("Jake Gyllenhaal")
+    else :
+        favourites.append("none")
     
     #question 5
     print("\n5)Choose two of the genres below that you enjoy the most:\na)comedy\nb)action\nc)drama\nd)horror\n")
     answer=(input("answer:"))
     while answer!='a' and answer!='b' and  answer!='c' and answer!='d' :
         answer=input("Please choose one of the options:\n")
-    favourites.append(answer)
+    if answer=='a':
+        favourites.append("comedy")
+    elif answer=='b':
+        favourites.append("action")
+    elif answer=='c':
+        favourites.append("drama")
+    else :
+        favourites.append("horror")
 
     #question 6
     print("\n6)What is your preferred movie length?\na)a shorter film(~90 minutes)\nb)average length(~1.5 to 2 hours)\nc)a long movie(~2.5 hours or more)\n")
@@ -136,7 +162,7 @@ def questionnaire(favourites=[]):
     elif answer=='b':
         favourites.append(120)
     else:
-        favourites.append(1000)
+        favourites.append(2500)
     
     #question 7
     print("\n7)Which one of these plots seems more interesting to you?\na)A mafia patriarch transfers control of his empire to his reluctant son")
@@ -186,9 +212,13 @@ def questionnaire(favourites=[]):
     while answer!='a' and answer!='b' and  answer!='c' and answer!='d' :
         answer=input("Please choose one of the options:\n")
     if answer=='a':
-        favourites.append('s')
-    elif answer=='b':
         favourites.append('m')
+    elif answer=='b':
+        favourites.append('s')
+    elif answer=='c':
+        favourites.append("neither")
+    else:
+        favourites.append("both")
     
 def max_index(points=[]):
     max=0
@@ -199,7 +229,6 @@ def max_index(points=[]):
             index=count
         count+=1
     points[index]=0
-    print("\n",points,"\n")
     return index
 
 #ranking movies based on user's answers
@@ -214,12 +243,12 @@ def compare(movies=[],fav=[],points=[]):
             if int(movies[i][1])>=8:
                 points[m_index]+=1
         elif fav[1]=="Rotten Tomatos":
-            if int(movies[i][7])>=80:
+            if int(movies[i][8])>=80:
                 points[m_index]+=1
         elif fav[1]=="both":
             if int(movies[i][1])>=8:
                 points[m_index]+=1
-            if int(movies[i][7])>=80:
+            if int(movies[i][8])>=80:
                 points[m_index]+=1
         #director
         if fav[2]==movies[i][2]:
@@ -251,21 +280,18 @@ def compare(movies=[],fav=[],points=[]):
         #series or movies
         if movies[i][6]==fav[9]:
             points[m_index]+=1
-
-        m_index+=1 #next movie
-
         #age-limit
         if movies[i][7]=='-':
             if int(profile['age'])<=15:
                 points[m_index]=0
 
+        m_index+=1 #next movie
+
 #starting,creating a profile,verifying the info,finding out the user's taste.
 profile = {}
+favs=[] #list of user's favourites
 welcome_page()
 create_profile(profile)
-
-
-favs=[] #list of user's favourites
 verify_information(profile,favs)
 
 #assigning points to each movie
@@ -277,12 +303,9 @@ for i in range(20):
 
 #assigning points:
 compare(movies,favs,points)
-print("\n",points,"\n")
-
-movie_names=list(movies.keys())
-print("\n",movie_names,"\n")
 
 #presenting top 5 movies
+movie_names=list(movies.keys())
 print("\n5 Movies that you might enjoy:")
 for i in range(0,5):
     index=max_index(points) 
