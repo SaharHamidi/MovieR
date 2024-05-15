@@ -254,6 +254,11 @@ def compare(movies=[],fav=[],points=[]):
 
         m_index+=1 #next movie
 
+        #age-limit
+        if movies[i][7]=='-':
+            if int(profile['age'])<=15:
+                points[m_index]=0
+
 #starting,creating a profile,verifying the info,finding out the user's taste.
 profile = {}
 welcome_page()
