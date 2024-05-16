@@ -111,7 +111,7 @@ def questionnaire(favourites=[]):
         favourites.append("2014")
     
     #question 2
-    print("\n2)Which rating do you think is most valid?\na)IMDB\nb)Rotten Tomatos\nc)neither\nd)both\n")
+    print("\n2)Which rating do you think is most valid?\na)IMDB\nb)Rotten Tomatoes\nc)neither\nd)both\n")
     answer=(input("answer:"))
     while answer!='a' and answer!='b' and  answer!='c' and answer!='d':
         answer=input("Please choose one of the options:\n") 
@@ -154,7 +154,7 @@ def questionnaire(favourites=[]):
         favourites.append("none")
     
     #question 5
-    print("\n5)Choose two of the genres below that you enjoy the most:\na)comedy\nb)action\nc)drama\nd)horror\n")
+    print("\n5)Choose one of the genres below that you enjoy the most:\na)comedy\nb)action\nc)drama\nd)horror\n")
     answer=(input("answer:"))
     while answer!='a' and answer!='b' and  answer!='c' and answer!='d' :
         answer=input("Please choose one of the options:\n")
@@ -321,16 +321,10 @@ compare(movies,favs,points)
 
 #presenting top 5 movies
 movie_names=list(movies.keys())
-print("\n|-------------------------------------------------------|")
-print("|\t\t\t\t\t\t\t|")
-print("|\t\t5 Movies that you might enjoy:\t\t|")
-print("|\t\t\t\t\t\t\t|")
-print("|-------------------------------------------------------|")
-print("|\t\t\t\t\t\t\t|")
+print("\n-------------------------------")
+print("\n5 Movies that you might enjoy:")
+print("\n-------------------------------\n")
 for i in range(0,5):
     index=max_index(points) 
-    print("|\t\t",movie_names[index],"\t\t\t\t|")
-print("|\t\t\t\t\t\t\t|")
-print("|-------------------------------------------------------|\n")
-print("\n")
-
+    print(i+1,".",movie_names[index])
+print("\n-------------------------------\n")
