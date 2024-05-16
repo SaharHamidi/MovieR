@@ -28,9 +28,12 @@ for i in moviesDB:
         moviesDB[i].append(movies[j][k])
     k+=1
 
-
 movies_dataF=pd.DataFrame(moviesDB,index=list(movies.keys()))
-print(movies_dataF)
+writer=pd.ExcelWriter("dataframe_Movies.xlsx",engine="xlsxwriter")
+movies_dataF.to_excel(writer,sheet_name="information")
+writer._save()
+
+
 
 def welcome_page():
     
@@ -244,7 +247,7 @@ def max_index(points=[]):
     return index
 
 #ranking movies based on user's answers
-def compare(movies=[],fav=[],points=[]):
+def compare(movies={},fav=[],points=[]):
     m_index=0 #index of each movie
     for i in movies:
         #year
@@ -318,7 +321,16 @@ compare(movies,favs,points)
 
 #presenting top 5 movies
 movie_names=list(movies.keys())
-print("\n5 Movies that you might enjoy:")
+print("\n|-------------------------------------------------------|")
+print("|\t\t\t\t\t\t\t|")
+print("|\t\t5 Movies that you might enjoy:\t\t|")
+print("|\t\t\t\t\t\t\t|")
+print("|-------------------------------------------------------|")
+print("|\t\t\t\t\t\t\t|")
 for i in range(0,5):
     index=max_index(points) 
-    print(movie_names[index])
+    print("|\t\t",movie_names[index],"\t\t\t\t|")
+print("|\t\t\t\t\t\t\t|")
+print("|-------------------------------------------------------|\n")
+print("\n")
+
