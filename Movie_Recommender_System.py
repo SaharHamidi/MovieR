@@ -1,3 +1,4 @@
+import pandas as pd
 #movies={"movie name":[year,IMDB ratings,director,cast,genre,time,series or movies,age-limit,rotten tomatoes]}
 movies={"Inception":[2010,9,"Christopher Nolan",["Leonardo Dicaprio","Cillian Murphy","Tom Hardy"],["action","sci-fi"],148,'m','+',87],
         "The dark knight":[2008,9,"Christopher Nolan",["Christian Bale","Heath Ledger","Gary Oldman"],["action","crime"],152,'m','+',84],
@@ -19,6 +20,17 @@ movies={"Inception":[2010,9,"Christopher Nolan",["Leonardo Dicaprio","Cillian Mu
         "Dark":[2017,9,"Baran bo Odar",["Louis Hofmann","Lisa Vicari","Gina Stiebitz"],["mystery","thriller"],2100,'s','-',95],
         "Scenes from a Marriage":[2021,8,"Hagai Levi",["Oscar Isaac","Jessica Chastain","Sunita Mani"],["drama"],448,'s','-',83],
         "Mare of Easttown":[2021,8,"Craig Zobel",["Kate Winslet","Evan Peters","Angourie Rice"],["crime","drama"],420,'s','-',95]}
+
+moviesDB={"year":[],"IMDB":[],"director":[],"cast":[],"genre":[],"time":[],"series or movies":[],"age-limit":[],"Rotten tomatoes":[]}
+k=0
+for i in moviesDB:
+    for j in movies:
+        moviesDB[i].append(movies[j][k])
+    k+=1
+
+
+movies_dataF=pd.DataFrame(moviesDB,index=list(movies.keys()))
+print(movies_dataF)
 
 def welcome_page():
     
